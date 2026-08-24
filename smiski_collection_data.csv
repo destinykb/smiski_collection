@@ -1,0 +1,126 @@
+id,series,name,own,secret,image
+1,Series 1,Smiski Hugging Knees,False,False,https://smiski.com/wp-content/uploads/2016/03/s1_01.png
+2,Series 1,Smiski Sitting,False,False,https://smiski.com/wp-content/uploads/2016/03/s1_02.png
+3,Series 1,Smiski Looking Back,False,False,https://smiski.com/wp-content/uploads/2016/03/s1_03.png
+4,Series 1,Smiski Lounging,False,False,https://smiski.com/wp-content/uploads/2016/03/s1_04.png
+5,Series 1,Smiski Hiding,False,False,https://smiski.com/wp-content/uploads/2016/03/s1_05.png
+6,Series 1,Smiski Peeking,False,False,https://smiski.com/wp-content/uploads/2016/03/s1_06.png
+10,Series 2,Smiski Kneeling,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_01.png
+11,Series 2,Smiski Climbing,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_02.png
+12,Series 2,Smiski Daydreaming,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_03.png
+13,Series 2,Smiski Pushing,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_04.png
+14,Series 2,Smiski Peeking,True,False,https://smiski.com/wp-content/uploads/2016/03/s2_05.png
+15,Series 2,Smiski Listening,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_06.png
+16,Series 2,Secret?,False,True,
+17,Series 3,Smiski Bridge,False,False,https://smiski.com/e/wp-content/uploads/2016/09/3_3.png
+18,Series 3,Smiski Peeking,False,False,https://smiski.com/e/wp-content/uploads/2016/09/3_4.png
+19,Series 3,Smiski Climbing,False,False,https://smiski.com/e/wp-content/uploads/2016/09/3_5.png
+20,Series 3,Smiski Little,True,False,https://smiski.com/e/wp-content/uploads/2016/09/3_6.png
+21,Series 3,Smiski Hiding,False,False,https://smiski.com/e/wp-content/uploads/2016/09/3_7.png
+22,Series 3,Smiski Handstand,False,False,https://smiski.com/e/wp-content/uploads/2016/09/3_8.png
+23,Series 3,Secret?,False,True,
+24,Series 4,Smiski Sneaking,False,False,https://smiski.com/e/wp-content/uploads/2017/02/3_3.png
+25,Series 4,Smiski Scared,False,False,https://smiski.com/e/wp-content/uploads/2017/02/3_4.png
+26,Series 4,Smiski Relaxed,True,False,https://smiski.com/e/wp-content/uploads/2017/02/3_5.png
+27,Series 4,Smiski Lazy,True,False,https://smiski.com/e/wp-content/uploads/2017/02/3_6.png
+28,Series 4,Smiski Stuck,False,False,https://smiski.com/e/wp-content/uploads/2017/02/3_7.png
+29,Series 4,Smiski Defeated,False,False,https://smiski.com/e/wp-content/uploads/2017/02/3_8.png
+30,Series 4,Secret?,False,True,
+31,Toilet,Smiski Peek-A-Boo,False,False,https://smiski.com/e/wp-content/uploads/2017/10/hyokkoriski.png
+32,Toilet,Smiski Little (Smelly),False,False,https://smiski.com/e/wp-content/uploads/2017/10/chibikusaski.png
+33,Toilet,Smiski Squatting,True,False,https://smiski.com/e/wp-content/uploads/2017/10/shagamiski.png
+34,Toilet,Smiski Helping Out,False,False,https://smiski.com/e/wp-content/uploads/2017/10/sashidashiski.png
+35,Toilet,Smiski Resting,True,False,https://smiski.com/e/wp-content/uploads/2017/10/koshikakeski.png
+36,Toilet,Smiski Holding In,False,False,https://smiski.com/e/wp-content/uploads/2017/10/gamanski.png
+37,Toilet,Secret?,False,True,
+38,Bath,Smiski Shampooing,False,False,https://smiski.com/e/wp-content/uploads/2017/10/awadateski.png
+39,Bath,Smiski Not Looking,False,False,https://smiski.com/e/wp-content/uploads/2017/10/tereski.png
+40,Bath,Smiski Scrubbing,False,False,https://smiski.com/e/wp-content/uploads/2017/10/araikkoski.png
+41,Bath,Smiski With Duck,True,False,https://smiski.com/e/wp-content/uploads/2017/10/ahirumochiski.png
+42,Bath,Smiski Dazed,False,False,https://smiski.com/e/wp-content/uploads/2017/10/noboseski.png
+43,Bath,Smiski Looking,True,False,https://smiski.com/e/wp-content/uploads/2017/10/mitaski.png
+44,Bath,Secret?,False,True,
+45,Living,Smiski Daydreaming,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/05.png
+46,Living,Smiski Playing,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/04.png
+47,Living,Smiski Hiding,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/02.png
+48,Living,Smiski Nap Time,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/03.png
+49,Living,Smiski Thinking,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/01.png
+50,Living,Smiski Lifting,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/06.png
+51,Living,Secret?,False,True,
+52,Bed,Smiski Before Rest,False,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_01.png
+53,Bed,Smiski Sleepy,False,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_02.png
+54,Bed,Smiski Co-Sleeping,True,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_03.png
+55,Bed,Smiski Reading,True,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_04.png
+56,Bed,Smiski At Sleep,False,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_05.png
+57,Bed,Smiski Fussing,True,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_06.png
+58,Bed,Secret?,False,True,
+59,Yoga,Smiski Lotus Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_01.png
+60,Yoga,Smiski Twist Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_02.png
+61,Yoga,Smiski Shouldstand Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_03.png
+62,Yoga,Smiski Triangle Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_04.png
+63,Yoga,Smiski Tree Pose,True,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_05.png
+64,Yoga,Smiski Ship Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_06.png
+65,Yoga,Secret?,False,True,
+66,Cheer,Smiski Marching,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_cheer_01.png
+67,Cheer,Smiski On Drums,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_cheer_02.png
+68,Cheer,Smiski On Your Side,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_cheer_03.png
+69,Cheer,Smiski Dancing,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_cheer_04.png
+70,Cheer,Little Smiski Cheerleading,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_cheer_05.png
+71,Cheer,Smiski Cheering,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_cheer_06.png
+72,Cheer,Secret?,False,True,
+73,Museum,Smiski The Source,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_01.png
+74,Museum,Smiski Fuzin&Raijin,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_02.png
+75,Museum,Smiski Bacchus,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_03.png
+76,Museum,Smiski Vela'zquez,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_04.png
+77,Museum,Smiski Dali,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_05.png
+78,Museum,Smiski Pearl Earring,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_06.png
+79,Museum,Secret?,False,True,
+80,@ Work,Smiski Approving,False,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_01.png
+81,@ Work,Smiski Researching,False,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_02.png
+82,@ Work,Smiski Presenting,False,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_03.png
+83,@ Work,Smiski Good Idea,True,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_04.png
+84,@ Work,Smiski On the Road,False,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_05.png
+85,@ Work,Little Smiski Group Think,True,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_06.png
+86,@ Work,Secret?,False,True,
+87,Dressing,Smiski Underpants,False,False,https://smiski.com/e/wp-content/uploads/2022/10/img_underpants_2.png
+88,Dressing,Smiski Struggling,False,False,https://smiski.com/e/wp-content/uploads/2022/10/img_struggling.png
+89,Dressing,Smiski Loose Pants,True,False,https://smiski.com/e/wp-content/uploads/2022/10/img_loose-pants.png
+90,Dressing,Smiski Putting On Socks,True,False,https://smiski.com/e/wp-content/uploads/2022/10/img_putting-on-socks_2.png
+91,Dressing,Smiski Sweater,False,False,https://smiski.com/e/wp-content/uploads/2022/10/img_sweater.png
+92,Dressing,Smiski Tight Pants,True,False,https://smiski.com/e/wp-content/uploads/2022/10/img_tight-pants.png
+93,Dressing,Secret?,False,True,
+94,Exercising,Smiski Doing Crunches,False,False,https://smiski.com/e/wp-content/uploads/2023/05/img_doingcrunches.png
+95,Exercising,Smiski Aerobics,False,False,https://smiski.com/e/wp-content/uploads/2023/05/img_aerobics.png
+96,Exercising,Little Smiski Balance,False,False,https://smiski.com/e/wp-content/uploads/2023/05/img_balance.png
+97,Exercising,Smiski Dumbbell,True,False,https://smiski.com/e/wp-content/uploads/2023/05/img_dumbbell.png
+98,Exercising,Smiski Hoop,False,False,https://smiski.com/e/wp-content/uploads/2023/05/img_hulahoop.png
+99,Exercising,Smiski Stretch,False,False,https://smiski.com/e/wp-content/uploads/2023/05/img_stretch.png
+100,Exercising,Secret?,False,True,
+101,Moving,Smiski Carrying Ladder,False,False,https://smiski.com/e/wp-content/uploads/2024/01/carrying-ladder.png
+102,Moving,Smiski Balancing Boxes,True,False,https://smiski.com/e/wp-content/uploads/2024/01/balancing-boxes.png
+103,Moving,Smiski Decorating,True,False,https://smiski.com/e/wp-content/uploads/2024/01/decorating.png
+104,Moving,Little Smiski Teamwork,False,False,https://smiski.com/e/wp-content/uploads/2024/01/teamwork.png
+105,Moving,Green Thumb Smiski,False,False,https://smiski.com/e/wp-content/uploads/2024/01/green-thumb.png
+106,Moving,Smiski Falling Down,True,False,https://smiski.com/e/wp-content/uploads/2024/01/falling-down.png
+107,Moving,Smiski?,False,False,
+108,Sunday,Smiski Blowing Bubbles,True,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday01.png
+109,Sunday,Smiski Paper Airplane,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday02.png
+110,Sunday,Smiski Sunbathing,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday03.png
+111,Sunday,Smiski Sing-Along,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday04.png
+112,Sunday,Smiski Skateboading,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday05.png
+113,Sunday,Secret?,False,True,
+114,Construction,Smiski Digging A Hole,False,False,https://smiski.com/e/wp-content/uploads/2026/06/img_construction_01.png
+115,Construction,Smiski Crushing Rock,False,False,https://smiski.com/e/wp-content/uploads/2026/06/img_construction_02.png
+116,Construction,Smiski Tightening Bolt,False,False,https://smiski.com/e/wp-content/uploads/2026/06/img_construction_03.png
+117,Construction,Smiski Measuring,False,False,https://smiski.com/e/wp-content/uploads/2026/06/img_construction_04.png
+118,Construction,Smiski Directing Traffic,False,False,https://smiski.com/e/wp-content/uploads/2026/06/img_construction_05.png
+119,Construction,Smiski Loosening Bolt,False,False,https://smiski.com/e/wp-content/uploads/2026/06/img_construction_06.png
+120,Construction,Secret?,False,True,
+121,Birthday,Smiski Giving A Bouquet,False,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday01.png
+122,Birthday,Smiski Wrapped Up,False,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday02.png
+123,Birthday,Smiski Popping Confetti,False,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday03.png
+124,Birthday,Smiski Birthday Message,True,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday04.png
+125,Birthday,Little Smiski Decorating,False,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday05.png
+126,Birthday,Smiski Tasting,False,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday06.png
+127,Birthday,Secret?,False,True,
+128,Sunday,Smiski Gardening,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday06.png
