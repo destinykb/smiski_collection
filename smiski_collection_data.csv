@@ -10,7 +10,7 @@ id,series,name,own,secret,image
 12,Series 2,Smiski Daydreaming,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_03.png
 13,Series 2,Smiski Pushing,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_04.png
 14,Series 2,Smiski Peeking,True,False,https://smiski.com/wp-content/uploads/2016/03/s2_05.png
-15,Series 2,Smiski Listening,False,False,https://smiski.com/wp-content/uploads/2016/03/s2_06.png
+15,Series 2,Smiski Listening,True,False,https://smiski.com/wp-content/uploads/2016/03/s2_06.png
 16,Series 2,Secret?,False,True,
 17,Series 3,Smiski Bridge,False,False,https://smiski.com/e/wp-content/uploads/2016/09/3_3.png
 18,Series 3,Smiski Peeking,False,False,https://smiski.com/e/wp-content/uploads/2016/09/3_4.png
@@ -44,7 +44,7 @@ id,series,name,own,secret,image
 46,Living,Smiski Playing,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/04.png
 47,Living,Smiski Hiding,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/02.png
 48,Living,Smiski Nap Time,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/03.png
-49,Living,Smiski Thinking,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/01.png
+49,Living,Smiski Thinking,True,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/01.png
 50,Living,Smiski Lifting,False,False,https://aa243gcvbg.smartrelease.jp/wp-content/uploads/2018/08/06.png
 51,Living,Secret?,False,True,
 52,Bed,Smiski Before Rest,False,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_01.png
@@ -54,7 +54,7 @@ id,series,name,own,secret,image
 56,Bed,Smiski At Sleep,False,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_05.png
 57,Bed,Smiski Fussing,True,False,https://smiski.com/e/wp-content/uploads/2019/07/img_bed_products_06.png
 58,Bed,Secret?,False,True,
-59,Yoga,Smiski Lotus Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_01.png
+59,Yoga,Smiski Lotus Pose,True,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_01.png
 60,Yoga,Smiski Twist Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_02.png
 61,Yoga,Smiski Shouldstand Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_03.png
 62,Yoga,Smiski Triangle Pose,False,False,https://smiski.com/e/wp-content/uploads/2019/09/img_yoga_04.png
@@ -71,7 +71,7 @@ id,series,name,own,secret,image
 73,Museum,Smiski The Source,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_01.png
 74,Museum,Smiski Fuzin&Raijin,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_02.png
 75,Museum,Smiski Bacchus,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_03.png
-76,Museum,Smiski Vela'zquez,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_04.png
+76,Museum,Smiski Vela'zquez,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_04.png
 77,Museum,Smiski Dali,False,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_05.png
 78,Museum,Smiski Pearl Earring,True,False,https://smiski.com/e/wp-content/uploads/2020/12/img_museum_products_06.png
 79,Museum,Secret?,False,True,
@@ -79,7 +79,7 @@ id,series,name,own,secret,image
 81,@ Work,Smiski Researching,False,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_02.png
 82,@ Work,Smiski Presenting,False,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_03.png
 83,@ Work,Smiski Good Idea,True,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_04.png
-84,@ Work,Smiski On the Road,False,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_05.png
+84,@ Work,Smiski On the Road,True,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_05.png
 85,@ Work,Little Smiski Group Think,True,False,https://smiski.com/wp-content/uploads/2022/02/img_work_products_06.png
 86,@ Work,Secret?,False,True,
 87,Dressing,Smiski Underpants,False,False,https://smiski.com/e/wp-content/uploads/2022/10/img_underpants_2.png
@@ -100,12 +100,12 @@ id,series,name,own,secret,image
 102,Moving,Smiski Balancing Boxes,True,False,https://smiski.com/e/wp-content/uploads/2024/01/balancing-boxes.png
 103,Moving,Smiski Decorating,True,False,https://smiski.com/e/wp-content/uploads/2024/01/decorating.png
 104,Moving,Little Smiski Teamwork,False,False,https://smiski.com/e/wp-content/uploads/2024/01/teamwork.png
-105,Moving,Green Thumb Smiski,False,False,https://smiski.com/e/wp-content/uploads/2024/01/green-thumb.png
+105,Moving,Green Thumb Smiski,True,False,https://smiski.com/e/wp-content/uploads/2024/01/green-thumb.png
 106,Moving,Smiski Falling Down,True,False,https://smiski.com/e/wp-content/uploads/2024/01/falling-down.png
 107,Moving,Smiski?,False,False,
 108,Sunday,Smiski Blowing Bubbles,True,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday01.png
 109,Sunday,Smiski Paper Airplane,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday02.png
-110,Sunday,Smiski Sunbathing,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday03.png
+110,Sunday,Smiski Sunbathing,True,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday03.png
 111,Sunday,Smiski Sing-Along,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday04.png
 112,Sunday,Smiski Skateboading,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday05.png
 113,Sunday,Secret?,False,True,
@@ -123,4 +123,4 @@ id,series,name,own,secret,image
 125,Birthday,Little Smiski Decorating,False,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday05.png
 126,Birthday,Smiski Tasting,False,False,https://smiski.com/e/wp-content/uploads/2025/09/img_birthday06.png
 127,Birthday,Secret?,False,True,
-128,Sunday,Smiski Gardening,False,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday06.png
+128,Sunday,Smiski Gardening,True,False,https://smiski.com/e/wp-content/uploads/2025/02/img_product_sunday06.png
