@@ -92,7 +92,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Overview metrics
+# collection metrics
 c1, c2, c3, c4 = st.columns(4)
 
 with c1:
@@ -126,7 +126,7 @@ with c4:
 
 st.divider()
 
-# Filters
+# filter
 left, right = st.columns([2, 1])
 
 with left:
@@ -151,7 +151,7 @@ if show == "Collected":
 elif show == "Missing":
     display_df = display_df[~display_df["own"]]
 
-# Figurine gallery
+# figures
 current_series = (
     [selected_series]
     if selected_series != "All Series"
@@ -173,7 +173,7 @@ for series in current_series:
             image_url = row["image"]
 
             if pd.notna(image_url) and image_url:
-                # dim missing figures.
+                # dim missing figures
                 opacity = "1" if row["own"] else "0.25"
                 grayscale = "grayscale(0%)" if row["own"] else "grayscale(100%)"
 
@@ -192,7 +192,7 @@ for series in current_series:
                     unsafe_allow_html=True,
                 )
 
-# Secrets
+# notes
 st.divider()
 st.subheader("Notes")
 st.caption(
@@ -210,3 +210,6 @@ st.caption(
 st.caption(
     "https://github.com/destinykb"
 )
+
+# app is deployed on following link
+# https://destinys-smiski-collection.streamlit.app/
