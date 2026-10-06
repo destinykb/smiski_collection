@@ -20,7 +20,12 @@ def load_data():
 
 
 df = load_data()
+
+# Exclude secret figures and specifically exclude "Smiski?" from the Moving Series
 regular = df[~df["secret"]].copy()
+is_moving_series = regular["series"].str.contains("Moving", case=False, na=False)
+is_smiski_question = regular["name"].str.strip().str.startswith("Smiski?")
+regular = regular[~(is_moving_series & is_smiski_question)].copy()
 
 # Metrics calculations
 owned = int(regular["own"].sum())
@@ -48,7 +53,7 @@ st.markdown(
         background-color: #e2eccb;
     }
 
-    /* Ensure Streamlit header is transparent so the reopen-sidebar arrow is visible */
+    /* Keep Streamlit header transparent so the sidebar toggle arrow is accessible */
     header[data-testid="stHeader"] {
         background-color: transparent !important;
     }
@@ -56,113 +61,113 @@ st.markdown(
     /* Container padding */
     .block-container {
         padding-top: 2rem;
-        padding-bottom: 2rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding-bottom: 2.5rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
         max-width: 100%;
     }
 
-    /* Centered, compact title */
+    /* Centered, bold Dark Green page title */
     .main-title {
         text-align: center;
-        font-size: 1.55rem;
-        font-weight: 800;
+        font-size: 1.85rem;
+        font-weight: 850;
         letter-spacing: -0.01em;
-        color: #2b3a2f;
-        margin-bottom: 0.75rem;
+        color: #1b3823;
+        margin-bottom: 1.25rem;
     }
 
-    /* Series section headings */
+    /* Dark Green series section headings */
     .series-heading {
-        font-size: 1.05rem;
-        font-weight: 750;
-        color: #314434;
-        margin-top: 1.2rem;
-        margin-bottom: 0.4rem;
-        border-bottom: 1.5px solid #d4e2be;
-        padding-bottom: 0.2rem;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #1b3823;
+        margin-top: 1.8rem;
+        margin-bottom: 0.75rem;
+        border-bottom: 2px solid #b7cc9e;
+        padding-bottom: 0.35rem;
     }
 
     /* Metric cards */
     .metric-container {
         background: rgba(255, 255, 255, 0.75);
         border: 1px solid #d4e2be;
-        border-radius: 9px;
-        padding: 0.4rem 0.6rem;
+        border-radius: 10px;
+        padding: 0.6rem 0.8rem;
         text-align: center;
         backdrop-filter: blur(4px);
     }
     .metric-val {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
         font-weight: 800;
-        color: #2e3e2b;
+        color: #1b3823;
         line-height: 1.1;
     }
     .metric-lbl {
-        font-size: 0.62rem;
+        font-size: 0.65rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: #5c7457;
-        margin-top: 2px;
+        color: #4a634e;
+        margin-top: 3px;
     }
 
-    /* Compact grid per series */
+    /* Full-width responsive grid */
     .figure-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 0.9rem;
+        width: 100%;
+        margin-bottom: 1rem;
     }
 
-    /* Individual figure card */
+    /* Larger Figure Card */
     .smiski-chip {
         position: relative;
         background: #ffffff;
-        border: 1px solid #dbe6cb;
-        border-radius: 8px;
-        padding: 0.35rem;
+        border: 1.5px solid #dbe6cb;
+        border-radius: 12px;
+        padding: 0.8rem 0.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
         text-align: center;
+        width: 100%;
+        box-sizing: border-box;
         transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
     .smiski-chip:hover {
-        box-shadow: 0 4px 10px rgba(138, 179, 78, 0.3);
-        border-color: #9fcc5f;
-        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(138, 179, 78, 0.32);
+        border-color: #8ebb27;
+        transform: translateY(-3px);
     }
     .smiski-chip.missing {
-        background: rgba(255, 255, 255, 0.45);
+        background: rgba(255, 255, 255, 0.5);
         border-color: #dbe6cb;
     }
     .smiski-thumb {
         width: 100%;
-        height: 72px;
+        height: 160px;
         object-fit: contain;
     }
     .figure-caption {
-        font-size: 0.63rem;
-        font-weight: 600;
-        line-height: 1.15;
-        margin-top: 0.25rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        width: 100%;
-        color: #2b3a2f;
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-top: 0.5rem;
+        color: #1b3823;
+        word-break: break-word;
     }
     .badge-dot {
-        height: 6px;
-        width: 6px;
+        height: 7px;
+        width: 7px;
         border-radius: 50%;
         display: inline-block;
-        margin-right: 3px;
+        margin-right: 4px;
     }
     .badge-dot.owned {
-        background-color: #7bb547;
+        background-color: #6da739;
     }
     .badge-dot.missing {
         background-color: #b0b7a8;
@@ -170,20 +175,20 @@ st.markdown(
     .badge-row {
         display: flex;
         align-items: center;
-        font-size: 0.58rem;
+        font-size: 0.68rem;
         font-weight: 600;
-        color: #637565;
-        margin-top: 1px;
+        color: #556956;
+        margin-top: 4px;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# filters
+# Filters (Sidebar)
 with st.sidebar:
-    st.markdown("### 🔍 Filters")
-    all_series_list = ["All Series"] + list(df["series"].drop_duplicates())
+    st.markdown("### Filters")
+    all_series_list = ["All Series"] + list(regular["series"].drop_duplicates())
     selected_series = st.selectbox("Series", all_series_list)
     show_status = st.radio(
         "Display Status",
@@ -192,24 +197,24 @@ with st.sidebar:
     )
 
     st.markdown("---")
-    st.markdown("### 📊 Progress Tracker")
+    st.markdown("### Progress")
     for _, row in series_stats.iterrows():
         pct = row["percent"] / 100
         st.write(f"**{row['series']}** ({row['collected']}/{row['total']})")
         st.progress(pct)
 
     st.markdown("---")
-    st.caption("✨ Secret figures are not represented.")
+    st.caption("Secret figures are not represented.")
     st.caption("Destiny Brewington • [GitHub](https://github.com/destinykb)")
 
-# dash
+# Main Dashboard Title
 st.markdown('<div class="main-title">Destiny\'s Smiski Collection</div>', unsafe_allow_html=True)
 
-# Metrics
+# Metrics Cards
 m1, m2, m3, m4 = st.columns(4)
 with m1:
     st.markdown(
-        f'<div class="metric-container"><div class="metric-val">{owned} <span style="font-size:0.85rem; color:#6b7d6c;">/ {total}</span></div><div class="metric-lbl">Collected</div></div>',
+        f'<div class="metric-container"><div class="metric-val">{owned} <span style="font-size:0.9rem; color:#6b7d6c;">/ {total}</span></div><div class="metric-lbl">Collected</div></div>',
         unsafe_allow_html=True,
     )
 with m2:
@@ -242,7 +247,7 @@ elif show_status == "Missing Only":
 series_order = (
     [selected_series]
     if selected_series != "All Series"
-    else list(df["series"].drop_duplicates())
+    else list(regular["series"].drop_duplicates())
 )
 
 for series_name in series_order:
@@ -250,11 +255,11 @@ for series_name in series_order:
     if series_group.empty:
         continue
 
-    # series headers
+    # Series Headers
     clean_series_name = str(series_name).replace('"', '&quot;')
     st.markdown(f'<div class="series-heading">{clean_series_name}</div>', unsafe_allow_html=True)
 
-    # cards
+    # Cards Grid
     card_html_list = []
     for _, row in series_group.iterrows():
         is_owned = bool(row["own"])
