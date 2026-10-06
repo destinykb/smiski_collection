@@ -187,14 +187,14 @@ with st.sidebar:
     show_status = st.radio("Display Status", ["All", "Collected Only", "Missing Only"], horizontal=True)
 
     st.markdown("---")
-    st.markdown("### 📊 Series Breakdown")
+    st.markdown("### Series Breakdown")
     for _, row in series_stats.iterrows():
         pct = row["percent"] / 100
         st.write(f"**{row['series']}** ({row['collected']}/{row['total']})")
         st.progress(pct)
 
     st.markdown("---")
-    st.caption("Secret figures are excluded from standard completion totals.")
+    st.caption("Secret figures are excluded.")
     st.caption("Destiny Brewington • [GitHub](https://github.com/destinykb)")
 
 # dash
@@ -202,8 +202,7 @@ st.markdown(
     """
     <div class="dash-header">
         <div>
-            <span class="dash-title">SMISKI INVENTORY</span>
-            <span class="dash-subtitle">&nbsp;• Glow-in-the-dark companion tracker</span>
+            <span class="dash-title">SMISKI COLLECTION</span>
         </div>
     </div>
     """,
