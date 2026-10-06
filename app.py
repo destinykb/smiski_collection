@@ -5,9 +5,11 @@ st.set_page_config(
     page_title="Destiny's Smiski Collection",
     page_icon="💚",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
 DATA_PATH = "smiski_collection_data.csv"
+
 
 @st.cache_data
 def load_data():
@@ -16,200 +18,258 @@ def load_data():
     df["secret"] = df["secret"].astype(bool)
     return df
 
+
 df = load_data()
 regular = df[~df["secret"]].copy()
 
+# Metrics calculations
 owned = int(regular["own"].sum())
 total = len(regular)
 remaining = total - owned
-completion = owned / total if total else 0
+completion = (owned / total) if total else 0
 
 series_stats = (
     regular.groupby("series", sort=False)
     .agg(collected=("own", "sum"), total=("own", "size"))
     .reset_index()
 )
-series_stats["percent"] = series_stats["collected"] / series_stats["total"] * 100
+series_stats["percent"] = (series_stats["collected"] / series_stats["total"]) * 100
+series_complete = int((series_stats["percent"] == 100).sum())
 
+# layout
 st.markdown(
     """
     <style>
-    .main-title {
+    /* Reduce Streamlit container padding */
+    .block-container {
+        padding-top: 1.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        max-width: 100%;
+    }
+    header[data-testid="stHeader"] {
+        display: none;
+    }
+
+    /* Header Bar */
+    .dash-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        padding-bottom: 0.4rem;
+    }
+    .dash-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #2b3a2f;
+        margin: 0;
+    }
+    .dash-subtitle {
+        color: #7b8e7e;
+        font-size: 0.85rem;
+    }
+
+    /* Metric pill cards */
+    .metric-container {
+        background: #f4f7ee;
+        border: 1px solid #dce8ca;
+        border-radius: 10px;
+        padding: 0.45rem 0.8rem;
         text-align: center;
-        font-size: 3rem;
+        transition: transform 0.15s ease-in-out;
+    }
+    .metric-container:hover {
+        transform: translateY(-2px);
+    }
+    .metric-val {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #3b503d;
+        line-height: 1.1;
+    }
+    .metric-lbl {
+        font-size: 0.65rem;
         font-weight: 700;
-        margin-bottom: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #718873;
+        margin-top: 2px;
     }
-    .subtitle {
+
+    /* Grid Display */
+    .figure-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+        max-height: 72vh;
+        overflow-y: auto;
+        padding-right: 4px;
+    }
+
+    /* Compact Figure Card */
+    .smiski-chip {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #e7ede2;
+        border-radius: 8px;
+        padding: 0.35rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         text-align: center;
-        color: #777;
-        margin-top: 0.25rem;
-        margin-bottom: 2rem;
+        transition: all 0.2s ease;
     }
-    .metric-card {
-        text-align: center;
-        padding: 1rem 0.5rem;
-        border-radius: 14px;
-        background: #dae586;
+    .smiski-chip:hover {
+        box-shadow: 0 4px 12px rgba(186, 219, 114, 0.25);
+        border-color: #badb72;
+        transform: translateY(-1px);
+        z-index: 2;
     }
-    .metric-number {
-        font-size: 2rem;
-        font-weight: 700;
+    .smiski-chip.missing {
+        background: #fbfbfb;
+        border-color: #ededed;
     }
-    .metric-label {
-        color: #777;
-        font-size: 0.9rem;
+    .smiski-thumb {
+        width: 100%;
+        height: 70px;
+        object-fit: contain;
+        transition: filter 0.2s ease, opacity 0.2s ease;
     }
-    .smiski-card {
-        text-align: center;
-        padding: 0.6rem;
-        border-radius: 14px;
-        background: #fafafa;
-        margin-bottom: 1rem;
-    }
-    .smiski-name {
-        font-size: 0.9rem;
-        min-height: 2.5rem;
-        margin-top: 0.3rem;
-    }
-    .owned-label {
-        color: #6c8b72;
-        font-size: 0.75rem;
+    .figure-caption {
+        font-size: 0.65rem;
         font-weight: 600;
+        line-height: 1.1;
+        margin-top: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        color: #333;
     }
-    .missing-label {
-        color: #aaa;
-        font-size: 0.75rem;
+    .badge-dot {
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 3px;
+    }
+    .badge-dot.owned {
+        background-color: #7bb547;
+        box-shadow: 0 0 5px #a6df74;
+    }
+    .badge-dot.missing {
+        background-color: #d1d5db;
+    }
+    .badge-row {
+        display: flex;
+        align-items: center;
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: #777;
+        margin-top: 1px;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-st.markdown('<div class="main-title">MY SMISKI COLLECTION</div>', unsafe_allow_html=True)
+# filters
+with st.sidebar:
+    st.markdown("### Filters")
+    all_series_list = ["All Series"] + list(df["series"].drop_duplicates())
+    selected_series = st.selectbox("Series", all_series_list)
+    show_status = st.radio("Display Status", ["All", "Collected Only", "Missing Only"], horizontal=True)
+
+    st.markdown("---")
+    st.markdown("### 📊 Series Breakdown")
+    for _, row in series_stats.iterrows():
+        pct = row["percent"] / 100
+        st.write(f"**{row['series']}** ({row['collected']}/{row['total']})")
+        st.progress(pct)
+
+    st.markdown("---")
+    st.caption("Secret figures are excluded from standard completion totals.")
+    st.caption("Destiny Brewington • [GitHub](https://github.com/destinykb)")
+
+# dash
 st.markdown(
-    '<div class="subtitle">A visual record of my current Smiski collection! </div>',
+    """
+    <div class="dash-header">
+        <div>
+            <span class="dash-title">SMISKI INVENTORY</span>
+            <span class="dash-subtitle">&nbsp;• Glow-in-the-dark companion tracker</span>
+        </div>
+    </div>
+    """,
     unsafe_allow_html=True,
 )
 
-# collection metrics
-c1, c2, c3, c4 = st.columns(4)
-
-with c1:
+# Top KPI row (compact)
+m1, m2, m3, m4 = st.columns(4)
+with m1:
     st.markdown(
-        f'<div class="metric-card"><div class="metric-number">{owned} / {total}</div>'
-        f'<div class="metric-label">COLLECTED</div></div>',
+        f'<div class="metric-container"><div class="metric-val">{owned} <span style="font-size:0.9rem; color:#888;">/ {total}</span></div><div class="metric-lbl">Collected</div></div>',
+        unsafe_allow_html=True,
+    )
+with m2:
+    st.markdown(
+        f'<div class="metric-container"><div class="metric-val">{completion:.0%}</div><div class="metric-lbl">Progress</div></div>',
+        unsafe_allow_html=True,
+    )
+with m3:
+    st.markdown(
+        f'<div class="metric-container"><div class="metric-val">{remaining}</div><div class="metric-lbl">Missing</div></div>',
+        unsafe_allow_html=True,
+    )
+with m4:
+    st.markdown(
+        f'<div class="metric-container"><div class="metric-val">{series_complete}</div><div class="metric-lbl">Series Completed</div></div>',
         unsafe_allow_html=True,
     )
 
-with c2:
-    st.markdown(
-        f'<div class="metric-card"><div class="metric-number">{completion:.0%}</div>'
-        f'<div class="metric-label">COLLECTION COMPLETE</div></div>',
-        unsafe_allow_html=True,
-    )
-
-with c3:
-    st.markdown(
-        f'<div class="metric-card"><div class="metric-number">{remaining}</div>'
-        f'<div class="metric-label">STILL MISSING</div></div>',
-        unsafe_allow_html=True,
-    )
-
-with c4:
-    half_or_more = int((series_stats["percent"] >= 50).sum())
-    st.markdown(
-        f'<div class="metric-card"><div class="metric-number">{half_or_more}</div>'
-        f'<div class="metric-label">SERIES ≥ 50%</div></div>',
-        unsafe_allow_html=True,
-    )
-
-st.divider()
-
-# filter
-left, right = st.columns([2, 1])
-
-with left:
-    selected_series = st.selectbox(
-        "View series",
-        ["All Series"] + list(df["series"].drop_duplicates()),
-    )
-
-with right:
-    show = st.selectbox(
-        "Show",
-        ["All", "Collected", "Missing"],
-    )
-
+# Filter dataset
 display_df = regular.copy()
-
 if selected_series != "All Series":
     display_df = display_df[display_df["series"] == selected_series]
 
-if show == "Collected":
+if show_status == "Collected Only":
     display_df = display_df[display_df["own"]]
-elif show == "Missing":
+elif show_status == "Missing Only":
     display_df = display_df[~display_df["own"]]
 
-# figures
-current_series = (
-    [selected_series]
-    if selected_series != "All Series"
-    else list(df["series"].drop_duplicates())
-)
+# Render compact grid
+card_html_list = []
+for _, row in display_df.iterrows():
+    is_owned = bool(row["own"])
+    img = row["image"] if pd.notna(row["image"]) else ""
+    name = row["name"]
+    series = row["series"]
 
-for series in current_series:
-    series_df = display_df[display_df["series"] == series]
+    opacity = "1.0" if is_owned else "0.22"
+    grayscale = "grayscale(0%)" if is_owned else "grayscale(100%)"
+    card_class = "smiski-chip" if is_owned else "smiski-chip missing"
+    dot_class = "owned" if is_owned else "missing"
+    status_text = "Owned" if is_owned else "Needed"
 
-    if series_df.empty:
-        continue
+    card_html = f"""
+    <div class="{card_class}" title="{name} ({series})">
+        <img class="smiski-thumb" src="{img}" style="opacity:{opacity}; filter:{grayscale};" loading="lazy" />
+        <div class="figure-caption">{name}</div>
+        <div class="badge-row">
+            <span class="badge-dot {dot_class}"></span>{status_text}
+        </div>
+    </div>
+    """
+    card_html_list.append(card_html)
 
-    st.subheader(series)
-
-    cols = st.columns(6)
-
-    for i, (_, row) in enumerate(series_df.iterrows()):
-        with cols[i % 6]:
-            image_url = row["image"]
-
-            if pd.notna(image_url) and image_url:
-                # dim missing figures
-                opacity = "1" if row["own"] else "0.25"
-                grayscale = "grayscale(0%)" if row["own"] else "grayscale(100%)"
-
-                st.markdown(
-                    f"""
-                    <div class="smiski-card">
-                        <img src="{image_url}"
-                             style="width:100%; height:170px; object-fit:contain;
-                                    opacity:{opacity}; filter:{grayscale};">
-                        <div class="smiski-name">{row["name"]}</div>
-                        <div class="{'owned-label' if row['own'] else 'missing-label'}">
-                            {'✓ COLLECTED' if row['own'] else '○ MISSING'}
-                        </div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True,
-                )
-
-# notes
-st.divider()
-st.subheader("Notes")
-st.caption(
-    "Secret figures are not represented."
-)
-
-st.caption(
-    "Image sources: Smiski official product image URLs."
-)
-
-st.caption(
-    "Destiny Brewington"
-)
-
-st.caption(
-    "https://github.com/destinykb"
-)
+grid_wrapper = f'<div class="figure-grid">{"".join(card_html_list)}</div>'
+st.markdown(grid_wrapper, unsafe_allow_html=True)
 
 # app is deployed on following link
 # https://destinys-smiski-collection.streamlit.app/
