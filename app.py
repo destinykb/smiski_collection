@@ -248,8 +248,8 @@ card_html_list = []
 for _, row in display_df.iterrows():
     is_owned = bool(row["own"])
     img = row["image"] if pd.notna(row["image"]) else ""
-    name = row["name"]
-    series = row["series"]
+    name = str(row["name"]).replace('"', '&quot;')
+    series = str(row["series"]).replace('"', '&quot;')
 
     opacity = "1.0" if is_owned else "0.22"
     grayscale = "grayscale(0%)" if is_owned else "grayscale(100%)"
@@ -257,15 +257,14 @@ for _, row in display_df.iterrows():
     dot_class = "owned" if is_owned else "missing"
     status_text = "Owned" if is_owned else "Needed"
 
-    card_html = f"""
-    <div class="{card_class}" title="{name} ({series})">
-        <img class="smiski-thumb" src="{img}" style="opacity:{opacity}; filter:{grayscale};" loading="lazy" />
-        <div class="figure-caption">{name}</div>
-        <div class="badge-row">
-            <span class="badge-dot {dot_class}"></span>{status_text}
-        </div>
-    </div>
-    """
+    # Single-line string prevents Streamlit from interpreting indentation as a code block
+    card_html = (
+        f'<div class="{card_class}" title="{name} ({series})">'
+        f'<img class="smiski-thumb" src="{img}" style="opacity:{opacity}; filter:{grayscale};" loading="lazy" />'
+        f'<div class="figure-caption">{name}</div>'
+        f'<div class="badge-row"><span class="badge-dot {dot_class}"></span>{status_text}</div>'
+        f'</div>'
+    )
     card_html_list.append(card_html)
 
 grid_wrapper = f'<div class="figure-grid">{"".join(card_html_list)}</div>'
