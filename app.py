@@ -21,7 +21,7 @@ def load_data():
 
 df = load_data()
 
-# Exclude secret figures and specifically exclude "Smiski?" from the Moving Series
+# Exclude secret figures
 regular = df[~df["secret"]].copy()
 is_moving_series = regular["series"].str.contains("Moving", case=False, na=False)
 is_smiski_question = regular["name"].str.strip().str.startswith("Smiski?")
@@ -30,7 +30,6 @@ regular = regular[~(is_moving_series & is_smiski_question)].copy()
 # Metrics calculations
 owned = int(regular["own"].sum())
 total = len(regular)
-remaining = total - owned
 completion = (owned / total) if total else 0
 
 series_stats = (
@@ -39,7 +38,8 @@ series_stats = (
     .reset_index()
 )
 series_stats["percent"] = (series_stats["collected"] / series_stats["total"]) * 100
-series_complete = int((series_stats["percent"] == 100).sum())
+series_half_or_more = int((series_stats["percent"] >= 50).sum())
+total_series = len(series_stats)
 
 # Custom CSS
 st.markdown(
@@ -60,21 +60,37 @@ st.markdown(
 
     /* Container padding */
     .block-container {
-        padding-top: 2rem;
+        padding-top: 1.8rem;
         padding-bottom: 2.5rem;
         padding-left: 2.5rem;
         padding-right: 2.5rem;
         max-width: 100%;
     }
 
-    /* Centered, bold Dark Green page title */
+    /* Centered, bold Dark Green page title & subtitle */
     .main-title {
         text-align: center;
         font-size: 1.85rem;
         font-weight: 850;
         letter-spacing: -0.01em;
         color: #1b3823;
-        margin-bottom: 1.25rem;
+        margin-bottom: 0.2rem;
+    }
+    .main-subtitle {
+        text-align: center;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #3b563f;
+        margin-bottom: 1.4rem;
+    }
+    .main-subtitle a {
+        color: #1b3823;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color 0.15s ease;
+    }
+    .main-subtitle a:hover {
+        color: #4b7b30;
     }
 
     /* Dark Green series section headings */
@@ -88,17 +104,17 @@ st.markdown(
         padding-bottom: 0.35rem;
     }
 
-    /* Metric cards */
+    /* Metric cards (3 evenly distributed columns) */
     .metric-container {
-        background: rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.78);
         border: 1px solid #d4e2be;
         border-radius: 10px;
-        padding: 0.6rem 0.8rem;
+        padding: 0.65rem 0.8rem;
         text-align: center;
         backdrop-filter: blur(4px);
     }
     .metric-val {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
         font-weight: 800;
         color: #1b3823;
         line-height: 1.1;
@@ -110,6 +126,18 @@ st.markdown(
         letter-spacing: 0.05em;
         color: #4a634e;
         margin-top: 3px;
+    }
+
+    /* Dark Green Progress Bars in Sidebar */
+    div[data-testid="stProgressBar"] > div {
+        background-color: #c9dbb3 !important; /* progress track background */
+        border-radius: 6px;
+    }
+    div[data-testid="stProgressBar"] div[role="progressbar"],
+    div[data-testid="stProgressBar"] div[data-testid="stProgressValue"],
+    div[data-testid="stProgressBar"] > div > div {
+        background-color: #1b3823 !important; /* fill color */
+        border-radius: 6px;
     }
 
     /* Full-width responsive grid */
@@ -185,7 +213,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Filters (Sidebar)
+# Filters
 with st.sidebar:
     st.markdown("### Filters")
     all_series_list = ["All Series"] + list(regular["series"].drop_duplicates())
@@ -205,13 +233,16 @@ with st.sidebar:
 
     st.markdown("---")
     st.caption("Secret figures are not represented.")
-    st.caption("Destiny Brewington • [GitHub](https://github.com/destinykb)")
 
-# Main Dashboard Title
+# Dashboard Title
 st.markdown('<div class="main-title">Destiny\'s Smiski Collection</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="main-subtitle">Destiny Brewington • <a href="https://github.com/destinykb" target="_blank">GitHub</a></div>',
+    unsafe_allow_html=True,
+)
 
-# Metrics Cards
-m1, m2, m3, m4 = st.columns(4)
+# 3-Column Metrics Row
+m1, m2, m3 = st.columns(3)
 with m1:
     st.markdown(
         f'<div class="metric-container"><div class="metric-val">{owned} <span style="font-size:0.9rem; color:#6b7d6c;">/ {total}</span></div><div class="metric-lbl">Collected</div></div>',
@@ -224,12 +255,7 @@ with m2:
     )
 with m3:
     st.markdown(
-        f'<div class="metric-container"><div class="metric-val">{remaining}</div><div class="metric-lbl">Missing</div></div>',
-        unsafe_allow_html=True,
-    )
-with m4:
-    st.markdown(
-        f'<div class="metric-container"><div class="metric-val">{series_complete}</div><div class="metric-lbl">Series Complete</div></div>',
+        f'<div class="metric-container"><div class="metric-val">{series_half_or_more} <span style="font-size:0.9rem; color:#6b7d6c;">/ {total_series}</span></div><div class="metric-lbl">Series ≥ 50% Collected</div></div>',
         unsafe_allow_html=True,
     )
 
@@ -243,7 +269,7 @@ if show_status == "Collected Only":
 elif show_status == "Missing Only":
     display_df = display_df[~display_df["own"]]
 
-# Display figures organized by series
+# Display figures by series
 series_order = (
     [selected_series]
     if selected_series != "All Series"
@@ -255,11 +281,11 @@ for series_name in series_order:
     if series_group.empty:
         continue
 
-    # Series Headers
+    # Series
     clean_series_name = str(series_name).replace('"', '&quot;')
     st.markdown(f'<div class="series-heading">{clean_series_name}</div>', unsafe_allow_html=True)
 
-    # Cards Grid
+    # Cards
     card_html_list = []
     for _, row in series_group.iterrows():
         is_owned = bool(row["own"])
