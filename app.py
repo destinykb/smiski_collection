@@ -296,7 +296,7 @@ for series_name in series_order:
         grayscale = "grayscale(0%)" if is_owned else "grayscale(100%)"
         card_class = "smiski-chip" if is_owned else "smiski-chip missing"
         dot_class = "owned" if is_owned else "missing"
-        status_text = "Owned" if is_owned else "Needed"
+        status_text = "Own" if is_owned else "Missing"
 
         card_html = (
             f'<div class="{card_class}" title="{name}">'
